@@ -1,0 +1,32 @@
+{
+  "name": "tle-qa-atumation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test -g \"@smoke\"",
+    "codegen": "playwright codegen",
+    "show-report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuvrajsingh2428/tle-qa-atumation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yuvrajsingh2428/tle-qa-atumation/issues"
+  },
+  "homepage": "https://github.com/yuvrajsingh2428/tle-qa-atumation#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1",
+    "dotenv": "^17.2.3",
+    "typescript": "^5.9.3"
+  }
+}

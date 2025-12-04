@@ -1,0 +1,50 @@
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+
+Running 1 test using 1 worker
+
+[1A[2K[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+
+[1A[2K[1/1] [chromium-desktop] › tests\user-journeys\course-purchase.spec.ts:8:9 › User Journey: Course Exploration › Navigate to Level 1 Course details @smoke
+[1A[2K[chromium-desktop] › tests\user-journeys\course-purchase.spec.ts:8:9 › User Journey: Course Exploration › Navigate to Level 1 Course details @smoke
+Setting up guest user context...
+
+[1A[2K  1) [chromium-desktop] › tests\user-journeys\course-purchase.spec.ts:8:9 › User Journey: Course Exploration › Navigate to Level 1 Course details @smoke › Navigate to Courses page 
+
+    Error: locator.click: Error: strict mode violation: getByText('Courses', { exact: true }) resolved to 2 elements:
+        1) <div class="sc-fhzFiK iIHCiN">Courses</div> aka getByRole('link', { name: 'Courses', exact: true })
+        2) <div class="sc-dZoequ fATtfi">Courses</div> aka getByText('Courses', { exact: true }).nth(1)
+
+    Call log:
+    [2m  - waiting for getByText('Courses', { exact: true })[22m
+
+
+       at ..\src\pages\HomePage.ts:18
+
+      16 |
+      17 |     async clickCourses() {
+    > 18 |         await this.coursesLink.click();
+         |                                ^
+      19 |     }
+      20 | }
+      21 |
+        at HomePage.clickCourses (C:\Users\MSI PC\tle-qa-atumation\src\pages\HomePage.ts:18:32)
+        at C:\Users\MSI PC\tle-qa-atumation\tests\user-journeys\course-purchase.spec.ts:17:28
+        at C:\Users\MSI PC\tle-qa-atumation\tests\user-journeys\course-purchase.spec.ts:16:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\user-journeys-course-purch-63374-evel-1-Course-details-smoke-chromium-desktop\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\user-journeys-course-purch-63374-evel-1-Course-details-smoke-chromium-desktop\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\user-journeys-course-purch-63374-evel-1-Course-details-smoke-chromium-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\user-journeys-course-purch-63374-evel-1-Course-details-smoke-chromium-desktop\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  1 failed
+    [chromium-desktop] › tests\user-journeys\course-purchase.spec.ts:8:9 › User Journey: Course Exploration › Navigate to Level 1 Course details @smoke 
