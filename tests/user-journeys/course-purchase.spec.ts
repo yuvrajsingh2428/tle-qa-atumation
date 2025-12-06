@@ -13,6 +13,9 @@ test.describe('User Journey: Course Exploration', () => {
             await homePage.goto();
         });
 
+        // Login is now handled by the 'setup' project and storageState.
+        // We start the test already logged in.
+
         await test.step('Navigate to Courses page', async () => {
             await homePage.clickCourses();
         });
@@ -30,6 +33,12 @@ test.describe('User Journey: Course Exploration', () => {
             await newPage.waitForLoadState();
             // Verify the header
             await courseDetailsPage.verifyHeader('Level 1 Self-Paced');
+
+            // Click Enroll Now
+            await courseDetailsPage.clickEnrollNow();
+
+            // PAUSE here so you can inspect the Checkout Page and give me locators
+            await newPage.pause();
         });
     });
 });
