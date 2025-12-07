@@ -22,6 +22,7 @@ export class CheckoutPage {
     readonly couponApplyButton: Locator;
     readonly couponInput: Locator;
     readonly couponErrorMsg: Locator;
+    readonly couponSuccessMsg: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -49,6 +50,7 @@ export class CheckoutPage {
         this.couponApplyButton = page.getByText('Apply', { exact: true }).last();
         this.couponInput = page.getByPlaceholder('Enter coupon code');
         this.couponErrorMsg = page.getByText('Code INVALIDCODE123 is invalid. We’ve automatically applied the best coupon code for you.');
+        this.couponSuccessMsg = page.getByText('30% discount applied!');
     }
 
     // Helper to get "Add" button for a specific card

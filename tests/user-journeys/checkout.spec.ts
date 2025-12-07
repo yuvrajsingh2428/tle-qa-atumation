@@ -88,6 +88,14 @@ test.describe('Checkout Process & Bundling', () => {
             await checkout.applyCoupon(COURSE_DATA.coupons.invalid);
             await expect(checkout.couponErrorMsg).toBeVisible();
             console.log('[Test] Invalid Coupon Error Verified.');
+
+            // Verify Reversion to Best Coupon
+            console.log('[Test] Verifying Reversion to Best Coupon...');
+            await expect(checkout.couponChangeButton).toBeVisible();
+            await expect(checkout.couponInput).toHaveValue('ALUMNI30');
+            await expect(checkout.couponInput).toHaveAttribute('readonly', '');
+            await expect(checkout.couponSuccessMsg).toBeVisible();
+            console.log('[Test] Coupon Reversion Verified.');
         });
     });
 });
