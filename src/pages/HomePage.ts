@@ -17,7 +17,7 @@ export class HomePage {
     }
 
     async goto() {
-        await this.page.goto('/');
+        await this.page.goto('https://staging-rq8v6p5n.tle-eliminators.com');
     }
 
     async clickCourses() {

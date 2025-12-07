@@ -44,10 +44,11 @@ export class CheckoutPage {
         this.priceDetailsHeader = page.getByText('Price Details');
         // Matches total price in the footer button or price details section
         this.totalPrice = page.locator('span').filter({ hasText: '₹' }).last();
-        this.couponChangeButton = page.locator('div').filter({ hasText: /^Change$/ }).first();
-        this.couponApplyButton = page.getByText('Apply');
+        // Use .last() to ensure we select the inner button div, not the parent wrapper
+        this.couponChangeButton = page.getByText('Change', { exact: true }).last();
+        this.couponApplyButton = page.getByText('Apply', { exact: true }).last();
         this.couponInput = page.getByPlaceholder('Enter coupon code');
-        this.couponErrorMsg = page.getByText('Code ass is invalid. We’ve');
+        this.couponErrorMsg = page.getByText('Code INVALIDCODE123 is invalid. We’ve automatically applied the best coupon code for you.');
     }
 
     // Helper to get "Add" button for a specific card
@@ -101,19 +102,34 @@ export class CheckoutPage {
     }
 
     async applyCoupon(code: string) {
-        // If "Change" button is visible, it means a coupon is already applied.
-        // We must click it to make the input editable.
+        console.log(`[CheckoutPage] Applying coupon code: ${code}`);
+
+        // 1. Click "Change" if visible
         if (await this.couponChangeButton.isVisible()) {
+            console.log('[CheckoutPage] "Change" button found. Clicking...');
             await this.couponChangeButton.click();
-            // Wait for the input to become editable (not readonly)
-            await this.couponInput.waitFor({ state: 'visible' });
-            await this.page.waitForTimeout(1000); // Small stability wait
         }
 
-        // Clear existing text if any
+        // 2. Wait for "Apply" button to be visible (this confirms we are in edit mode)
+        // The user provided locator for Apply is <div class="sc-jRsTgw ctiubJ">Apply</div>
+        // Our current locator `getByText('Apply')` should match it, but let's be robust.
+        await this.couponApplyButton.waitFor({ state: 'visible', timeout: 5000 });
+
+        // 3. Clear and Fill Coupon Code
+        // The input becomes editable after clicking Change.
         await this.couponInput.clear();
         await this.couponInput.fill(code);
+
+        // 4. Click Apply
+        console.log('[CheckoutPage] Clicking Apply...');
         await this.couponApplyButton.click();
-        await this.page.waitForTimeout(1000); // Wait for application logic
+
+        // 5. Wait for Error Message (since we are testing invalid code)
+        // The user said the error message appears and then the best coupon is auto-applied.
+        // We should wait for the error message specifically.
+        // Locator provided: <div style="color: var(--tle-red-primary)...">Code <b>...</b> is invalid...</div>
+        // Our existing `couponErrorMsg` locator matches "Code ... is invalid".
+        await this.couponErrorMsg.waitFor({ state: 'visible', timeout: 5000 });
+        console.log('[CheckoutPage] Error message appeared.');
     }
 }
