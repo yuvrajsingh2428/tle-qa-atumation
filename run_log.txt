@@ -1,0 +1,82 @@
+﻿[dotenv@17.2.3] injecting env (0) from .env -- tip: ≡ƒöæ add access controls to secrets: https://dotenvx.com/ops
+
+Running 1 test using 1 worker
+
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ΓÜÖ∩╕Å  suppress all logs with { quiet: true }
+[Test] Verifying Single Course Validity...
+[Test] Single Course Validity Verified.
+[Test] Verifying Bundling Logic...
+[Test] Adding Level 2 Course...
+[Test] Level 1 and Level 2 are in cart.
+[Test] Verifying Level 3 cannot be added...
+[Test] Verifying Bundle Validity...
+[Test] Bundle Validity Verified.
+[Test] Proceeding to Price Details...
+[Test] Price Details Header Visible.
+[Test] Verifying Coupon Logic...
+[CheckoutPage] Applying coupon code: INVALIDCODE123
+[CheckoutPage] "Change" button found. Clicking...
+[CheckoutPage] Clicking Apply...
+[CheckoutPage] Error message appeared.
+[Test] Invalid Coupon Error Verified.
+[Test] Verifying Reversion to Best Coupon...
+[Test] Coupon Reversion Verified.
+[Test] Verifying Payment Flow...
+[Test] Clicking Proceed to Pay...
+[Test] Waiting for Razorpay Modal...
+[Test] Razorpay Modal Loaded.
+[Test] Merchant Name Verified: TLE Eliminators
+[Test] Payment Options (UPI, Card, EMI, Netbanking) Verified.
+[Test] Closing Razorpay Modal...
+  Γ£ÿ  1 [chromium-desktop] ΓÇ║ tests\user-journeys\checkout.spec.ts:11:9 ΓÇ║ Checkout Process & Bundling ΓÇ║ Verify Course Bundling, Validity and Pricing (22.8s)
+
+
+  1) [chromium-desktop] ΓÇ║ tests\user-journeys\checkout.spec.ts:11:9 ΓÇ║ Checkout Process & Bundling ΓÇ║ Verify Course Bundling, Validity and Pricing ΓÇ║ Verify Payment Flow 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeHidden[2m([22m[2m)[22m failed
+
+    Locator:  locator('iframe[class="razorpay-checkout-frame"]')
+    Expected: hidden
+    Received: visible
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeHidden" with timeout 5000ms[22m
+    [2m  - waiting for locator('iframe[class="razorpay-checkout-frame"]')[22m
+    [2m    9 ├ù locator resolved to <iframe width="100%" height="100%" frameborder="0" allowtransparency="true" class="razorpay-checkout-frame" allow="otp-credentials; payment; clipboard-write; publickey-credentials-get https://api.razorpay.com; publickey-credentials-create 'self' https://api.razorpay.com; web-share; camera *" src="https://api.razorpay.com/v1/checkout/public?traffic_env=production&build=fade55365989c80eb680cdb4336690354e6aec1a&build_v1=cb2fc10e95cbac52b796c4f30abcfd48da438eef&checkout_v2=1&new_session=1&unified_session_ΓÇª></iframe>[22m
+    [2m      - unexpected value "visible"[22m
+
+
+       at ..\src\pages\PaymentPage.ts:64
+
+      62 |
+      63 |         // Verify modal is closed (iframe hidden or detached)
+    > 64 |         await expect(this.page.locator('iframe[class="razorpay-checkout-frame"]')).toBeHidden();
+         |                                                                                    ^
+      65 |     }
+      66 | }
+      67 |
+        at PaymentPage.close (C:\Users\MSI PC\tle-qa-atumation\src\pages\PaymentPage.ts:64:84)
+        at C:\Users\MSI PC\tle-qa-atumation\tests\user-journeys\checkout.spec.ts:129:13
+        at C:\Users\MSI PC\tle-qa-atumation\tests\user-journeys\checkout.spec.ts:103:9
+
+    attachment #1: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\user-journeys-checkout-Che-b49c6-ndling-Validity-and-Pricing-chromium-desktop\test-failed-2.png
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    attachment #2: screenshot (image/png) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\user-journeys-checkout-Che-b49c6-ndling-Validity-and-Pricing-chromium-desktop\test-failed-1.png
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+    Error Context: test-results\user-journeys-checkout-Che-b49c6-ndling-Validity-and-Pricing-chromium-desktop\error-context.md
+
+    attachment #4: trace (application/zip) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    test-results\user-journeys-checkout-Che-b49c6-ndling-Validity-and-Pricing-chromium-desktop\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\user-journeys-checkout-Che-b49c6-ndling-Validity-and-Pricing-chromium-desktop\trace.zip
+
+    ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+  1 failed
+    [chromium-desktop] ΓÇ║ tests\user-journeys\checkout.spec.ts:11:9 ΓÇ║ Checkout Process & Bundling ΓÇ║ Verify Course Bundling, Validity and Pricing 

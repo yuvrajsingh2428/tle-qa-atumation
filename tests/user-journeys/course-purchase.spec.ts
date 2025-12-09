@@ -2,6 +2,8 @@ import { test, expect } from '../../src/fixtures/auth.fixture';
 import { HomePage } from '../../src/pages/HomePage';
 import { CoursePage } from '../../src/pages/CoursePage';
 import { CourseDetailsPage } from '../../src/pages/CourseDetailsPage';
+import { CheckoutPage } from '../../src/pages/CheckoutPage';
+import { PaymentPage } from '../../src/pages/PaymentPage';
 
 test.describe('User Journey: Course Exploration', () => {
 
@@ -37,8 +39,30 @@ test.describe('User Journey: Course Exploration', () => {
             // Click Enroll Now
             await courseDetailsPage.clickEnrollNow();
 
-            // PAUSE here so you can inspect the Checkout Page and give me locators
-            await newPage.pause();
+            // Initialize Checkout Page
+            console.log('Initializing CheckoutPage...');
+            const checkoutPage = new CheckoutPage(newPage);
+            await newPage.waitForLoadState('networkidle');
+            console.log('Waited for networkidle on CheckoutPage.');
+
+            // Click Proceed to Pay
+            console.log('Clicking Proceed to Pay...');
+            await checkoutPage.proceedToPayButton.click();
+            console.log('Clicked Proceed to Pay.');
+
+            // Initialize Payment Page (Razorpay)
+            console.log('Initializing PaymentPage...');
+            const paymentPage = new PaymentPage(newPage);
+
+            // Verify Razorpay Modal appears
+            console.log('Verifying Razorpay Modal...');
+            await paymentPage.verifyModalLoaded();
+            console.log('Razorpay Modal verified.');
+
+            // Close the modal to finish the test cleanly
+            console.log('Closing Razorpay Modal...');
+            await paymentPage.close();
+            console.log('Razorpay Modal closed.');
         });
     });
 });

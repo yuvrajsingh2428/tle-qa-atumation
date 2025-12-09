@@ -13,7 +13,9 @@ export class CourseDetailsPage {
         // The second button has width: 100% in the style, which is a good differentiator, 
         // or we can look for the one inside the card container.
         // Using the text and the specific container class or style is safer.
-        this.enrollNowButton = page.locator('.sc-fPHcVk').getByRole('button', { name: 'Enroll Now' });
+        // Using getByRole directly, filtering by name. Taking the first one if multiple exist, 
+        // or we can refine by text "Enroll Now" which is usually unique enough in context.
+        this.enrollNowButton = page.getByRole('button', { name: 'Enroll Now' }).first();
     }
 
     async verifyHeader(expectedText: string) {

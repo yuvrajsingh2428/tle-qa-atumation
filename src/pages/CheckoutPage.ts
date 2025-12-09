@@ -35,7 +35,8 @@ export class CheckoutPage {
 
         // Buttons
         this.continueButton = page.getByRole('button', { name: 'Continue' });
-        this.proceedToPayButton = page.getByRole('button', { name: 'Proceed to Pay' });
+        // Matches "Proceed to Pay" followed by any amount (e.g., "Proceed to Pay ₹2491")
+        this.proceedToPayButton = page.getByRole('button', { name: /^Proceed to Pay/ });
 
         // Validity
         this.validityDetailsLink = page.getByText('Validity Details');
